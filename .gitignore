@@ -1,4 +1,6 @@
 .stack-work/
-lambda.cabal
+.serverless/
+*.cabal
 build/
 *~
+node_modules

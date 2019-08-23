@@ -1,10 +1,10 @@
-name: lambda
+name: haskell-aws-lambda-template
 version: 0.1.0.0
 category: app
 author: Bellroy
 maintainer: geeks@bellroy.com
 copyright: Bellroy
-github: https://git.trikeapps.com/joy/tax-rates-service
+github: Unisay/haskell-aws-lambda-template
 license: NONE
 
 extra-source-files:
@@ -42,7 +42,7 @@ executables:
     cc-options: -static
     ld-options: -static -pthread
     dependencies:
-      - lambda
+      - haskell-aws-lambda-template
 
 default-extensions:
   - ApplicativeDo
