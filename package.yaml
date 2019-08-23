@@ -1,0 +1,89 @@
+name: lambda
+version: 0.1.0.0
+category: app
+author: Bellroy
+maintainer: geeks@bellroy.com
+copyright: Bellroy
+github: https://git.trikeapps.com/joy/tax-rates-service
+license: NONE
+
+extra-source-files:
+  - README.md
+
+ghc-options:
+  - "-Wall"
+  - "-Wcompat"
+  - "-Wincomplete-record-updates"
+  - "-Wincomplete-uni-patterns"
+  - "-Wredundant-constraints"
+  - "-Wtabs"
+  - "-fhelpful-errors"
+
+dependencies:
+  - base >= 4.7 && < 5
+  - aws-lambda-haskell-runtime >= 2.0.1
+
+library:
+  source-dirs: src
+  dependencies:
+    - aeson
+    - protolude
+
+executables:
+  bootstrap:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -O2
+      - -static
+      - -with-rtsopts=-N
+    cc-options: -static
+    ld-options: -static -pthread
+    dependencies:
+      - lambda
+
+default-extensions:
+  - ApplicativeDo
+  - AutoDeriveTypeable
+  - BangPatterns
+  - BinaryLiterals
+  - ConstraintKinds
+  - DataKinds
+  - DefaultSignatures
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveLift
+  - DeriveTraversable
+  - DerivingStrategies
+  - EmptyCase
+  - EmptyDataDecls
+  - ExistentialQuantification
+  - FlexibleContexts
+  - FlexibleInstances
+  - FunctionalDependencies
+  - GADTs
+  - GeneralizedNewtypeDeriving
+  - InstanceSigs
+  - KindSignatures
+  - LambdaCase
+  - MultiParamTypeClasses
+  - MultiWayIf
+  - NamedFieldPuns
+  - OverloadedLabels
+  - OverloadedStrings
+  - PatternSynonyms
+  - PatternGuards
+  - PartialTypeSignatures
+  - RankNTypes
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - TupleSections
+  - TypeApplications
+  - TypeFamilies
+  - TypeFamilyDependencies
+  - TypeOperators
+  - TypeSynonymInstances
+  - ViewPatterns
