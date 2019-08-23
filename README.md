@@ -19,11 +19,27 @@ produces `build/function.zip`
 
 ## How to deploy
 
-TBD
+```sh
+aws lambda create-function \
+  --profile test \
+  --function-name my-lambda \
+  --runtime provided \
+  --role 'arn:aws:iam::<your account id>:role/service-role/aws-lambda-function-role' \
+  --handler 'src/Lib.handler' \
+  --zip-file 'fileb://build/function.zip'
+```
 
 ## How to invoke
 
-TBD
+```sh
+aws lambda invoke \
+  --profile test \
+  --function-name my-lambda \
+  --payload '{ "personName": "Chuck Norris", "personAge": 79 }' \
+  response.txt
+
+cat response.txt
+```
 
 ## Links
 
