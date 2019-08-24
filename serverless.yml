@@ -1,5 +1,5 @@
 org: yuriylazaryev
-app: haskell-aws-lambda
+app: haskell-aws-lambda-example
 service: haskell-serverless
 provider:
   name: aws
@@ -10,8 +10,18 @@ provider:
   reservedConcurrency: 10
   timeout: 10
   logRetentionInDays: 14
+  cfnRole: ${ssm:/serverless/cfnRole/arn~true}
+  deploymentBucket:
+    name: com.bellroy.${self:provider.region}.deploys
+  tags:
+    serverless: ""
 package:
   individually: true
+  exclude:
+    - .stack-work/**
+    - .idea/**
+    - terraform/**
+    - build/**
 functions:
   haskell-aws-lambda:
     artifact: build/function.zip

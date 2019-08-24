@@ -1,6 +1,12 @@
 .stack-work/
 .serverless/
+.idea/
 *.cabal
+*.iml
+.DS_Store
 build/
+.terraform
+**.tfstate
+**.tfvars
 *~
 node_modules
