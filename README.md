@@ -3,19 +3,27 @@
 ## Prerequisites
 
 - [The Haskell Tool Stack](https://docs.haskellstack.org/en/stable/GUIDE/)
-- [Python 3](https://www.python.org/downloads/)
 - [Docker](https://www.docker.com/community-edition)
-- `make`
 - AWS CLI already configured with Administrator permission
-- Optionally: [Serverless Framework](https://serverless.com/)
+- [Serverless Framework](https://serverless.com/)
 
 ## How to build
 
 ```sh
-make all
+stack build
 ```
 
 produces `build/function.zip`
+
+## How to setup infrastructure
+
+Use `terraform` (one-time action) to setup infrastructure shared by serverless apps
+(S3 buckets, roles, etc)
+
+```sh
+cd terraform
+env AWS_PROFILE=test AWS_SDK_LOAD_CONFIG=1 terraform apply
+```
 
 ## How to deploy
 
@@ -33,7 +41,7 @@ aws lambda create-function \
 ### Using "serverless" framework
 
 ```sh
-serverless deploy
+./make.hs deploy --verbose
 ```
 
 ## How to invoke
@@ -52,11 +60,12 @@ cat response.txt
 ### Using "serverless" framework
 
 ```sh
-sls invoke \
-  -f haskell-aws-lambda \
-  -d '{ "personName": "Chuck Norris", "personAge": 79 }'
+./make.hs invoke --verbose \
+  --body '{ "personName": "Chuck Norris", "personAge": 79 }'
 ```
 
 ## Links
 
-- https://theam.github.io/aws-lambda-haskell-runtime/
+1. [The definitive guide to using Terraform with the Serverless Framework](https://serverless.com/blog/definitive-guide-terraform-serverless/)
+1. https://serverless.com
+1. https://theam.github.io/aws-lambda-haskell-runtime/

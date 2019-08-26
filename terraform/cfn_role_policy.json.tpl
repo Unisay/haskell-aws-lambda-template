@@ -60,7 +60,10 @@
         "logs:PutSubscriptionFilter",
         "logs:DeleteSubscriptionFilter"
       ],
-      "Resource":"arn:aws:logs:${region}:${account_no}:log-group:/aws/lambda/${service_name}-${stage}-${application_name}:log-stream:*",
+      "Resource":[
+        "arn:aws:logs:${region}:${account_no}:log-group:/aws/lambda/${service_name}-${stage}-${application_name}:log-stream:*",
+        "arn:aws:logs:${region}:${account_no}:log-group:/aws/api-gateway/${service_name}-${stage}:log-stream:*"
+      ],
       "Effect":"Allow"
     },
     {
@@ -77,7 +80,8 @@
       ],
       "Resource":[
         "arn:aws:iam::${account_no}:role/${service_name}-${stage}-${region}-lambdaRole",
-        "arn:aws:iam::${account_no}:role/${service_name}-${stage}-EnterpriseLogAccessIamRole-*"
+        "arn:aws:iam::${account_no}:role/${service_name}-${stage}-EnterpriseLogAccessIamRole-*",
+        "arn:aws:iam::${account_no}:role/${service_name}-${stage}-IamRoleCustomResourcesLambd-*"
       ]
     },
     {

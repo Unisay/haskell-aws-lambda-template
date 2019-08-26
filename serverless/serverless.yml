@@ -1,0 +1,46 @@
+org: yuriylazaryev
+frameworkVersion: "=1.50.0"
+app: haskell-aws-lambda-example
+service: haskell-serverless
+provider:
+  name: aws
+  runtime: provided
+  stage: dev
+  region: eu-central-1
+  memorySize: 1024
+  reservedConcurrency: 10
+  timeout: 10
+  logRetentionInDays: 14
+  cfnRole: ${ssm:/serverless/cfnRole/arn~true}
+  deploymentBucket:
+    name: ${ssm:/serverless/deploymentBucket/name~true}
+  tags:
+    serverless: ""
+  # iamRoleStatements:
+  #   - Effect: Allow
+  #     Action:
+  #       - dynamodb:DescribeTable
+  #       - dynamodb:Query
+  #       - dynamodb:Scan
+  #       - dynamodb:GetItem
+  #       - dynamodb:PutItem
+  #       - dynamodb:UpdateItem
+  #       - dynamodb:DeleteItem
+  #     Resource: "arn:aws:dynamodb:us-east-1:*:*"
+package:
+  individually: true
+  exclude:
+    - ./**
+  include:
+    - ../src/**
+    - ../app/**
+    - ../package.yaml
+    - bootstrap
+functions:
+  haskell-aws-lambda:
+    handler: src/Lib.handler
+    # events:
+    #   - http:
+    #       path: users/create
+    #       method: post
+    #       cors: true

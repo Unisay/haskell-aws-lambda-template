@@ -53,4 +53,11 @@ resource "aws_iam_role_policy_attachment" "serverless-attach" {
   policy_arn = aws_iam_policy.serverless_cfn_role_policy.arn
 }
 
+resource "aws_s3_bucket" "serverless_deployment_bucket" {
+  bucket = "bellroy-serverless-deployment-bucket"
+  versioning { enabled = false }
+  lifecycle { prevent_destroy = false }
+  tags = { Name = "Bucket that stores artifacts deployed with Serverless" }
+}
+
 

@@ -1,10 +1,11 @@
 .stack-work/
-.serverless/
+**/.serverless/
+serverless/bootstrap
+serverless_sdk
 .idea/
 *.cabal
 *.iml
 .DS_Store
-build/
 .terraform
 **.tfstate
 **.tfvars
