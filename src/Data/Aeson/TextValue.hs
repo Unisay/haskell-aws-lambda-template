@@ -1,7 +1,6 @@
 {-# LANGUAGE TemplateHaskell #-}
 
 {-|
-
 Description: Type for things that can be embedded in a JSON string
 
 Provides @FromJSON@ and @ToJSON@ instances for anything that

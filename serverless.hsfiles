@@ -1,0 +1,1289 @@
+{-# START_FILE .gitignore #-}
+.stack-work/
+**/.serverless/
+serverless/bootstrap
+serverless_sdk
+.idea/
+*.cabal
+*.iml
+.DS_Store
+.terraform
+**.tfstate
+**.tfvars
+*~
+node_modules
+
+{-# START_FILE .editorconfig #-}
+# EditorConfig is awesome: https://EditorConfig.org
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# Matches multiple files with brace expansion notation
+# Set default charset
+[*.{hs}]
+charset = utf-8
+
+# 2 space indentation
+[*.hs]
+indent_style = space
+indent_size = 2
+
+{-# START_FILE .ghci #-}
+:set -fwarn-unused-binds -fwarn-unused-imports
+:set -isrc
+:load Lib
+
+{-# START_FILE .nvmrc #-}
+node
+
+{-# START_FILE floskell.json #-}
+{
+  "style": "base",
+  "extensions": [
+    "BangPatterns",
+    "ConstraintKinds",
+    "DataKinds",
+    "DefaultSignatures",
+    "DeriveAnyClass",
+    "DeriveFoldable",
+    "DeriveFunctor",
+    "DeriveGeneric",
+    "DeriveTraversable",
+    "DerivingStrategies",
+    "DoAndIfThenElse",
+    "EmptyCase",
+    "EmptyDataDecls",
+    "ExistentialQuantification",
+    "FlexibleContexts",
+    "FlexibleInstances",
+    "FunctionalDependencies",
+    "GADTs",
+    "GeneralizedNewtypeDeriving",
+    "InstanceSigs",
+    "KindSignatures",
+    "LambdaCase",
+    "MultiParamTypeClasses",
+    "MultiWayIf",
+    "NamedFieldPuns",
+    "NoImplicitPrelude",
+    "OverloadedLabels",
+    "OverloadedStrings",
+    "PatternSynonyms",
+    "QuasiQuotes",
+    "RankNTypes",
+    "RecordWildCards",
+    "ScopedTypeVariables",
+    "StandaloneDeriving",
+    "TupleSections",
+    "TypeApplications",
+    "TypeFamilies",
+    "TypeFamilyDependencies",
+    "TypeSynonymInstances",
+    "TypeOperators"
+  ],
+  "fixities": [],
+  "formatting": {
+    "op": {
+      ",": {
+        "force-linebreak": false,
+        "spaces": "after",
+        "linebreaks": "before"
+      },
+      "=": {
+        "force-linebreak": false,
+        "spaces": "both",
+        "linebreaks": "after"
+      },
+      "@": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "none"
+      },
+      "default": {
+        "force-linebreak": false,
+        "spaces": "both",
+        "linebreaks": "before"
+      },
+      ". in expression": {
+        "force-linebreak": false,
+        "spaces": "both",
+        "linebreaks": "before"
+      },
+      "-> in expression": {
+        "force-linebreak": false,
+        "spaces": "both",
+        "linebreaks": "after"
+      },
+      ". in type": {
+        "force-linebreak": false,
+        "spaces": "after",
+        "linebreaks": "after"
+      },
+      "$": {
+        "force-linebreak": false,
+        "spaces": "both",
+        "linebreaks": "after"
+      },
+      "record in pattern": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "none"
+      }
+    },
+    "group": {
+      "$(": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "none"
+      },
+      "[ in pattern": {
+        "force-linebreak": false,
+        "spaces": "both",
+        "linebreaks": "after"
+      },
+      "(# in pattern": {
+        "force-linebreak": false,
+        "spaces": "both",
+        "linebreaks": "after"
+      },
+      "[p|": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "none"
+      },
+      "default": {
+        "force-linebreak": false,
+        "spaces": "both",
+        "linebreaks": "after"
+      },
+      "( in other": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "after"
+      },
+      "(# in expression": {
+        "force-linebreak": false,
+        "spaces": "both",
+        "linebreaks": "after"
+      },
+      "[|": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "none"
+      },
+      "* in type": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "after"
+      },
+      "* in pattern": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "after"
+      },
+      "(": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "after"
+      },
+      "[d|": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "none"
+      },
+      "[t|": {
+        "force-linebreak": false,
+        "spaces": "none",
+        "linebreaks": "none"
+      }
+    },
+    "layout": {
+      "infix-app": "flex",
+      "if": "try-oneline",
+      "import-spec-list": "try-oneline",
+      "con-decls": "try-oneline",
+      "declaration": "flex",
+      "app": "try-oneline",
+      "let": "try-oneline",
+      "record": "try-oneline",
+      "type": "try-oneline",
+      "export-spec-list": "try-oneline",
+      "list-comp": "try-oneline"
+    },
+    "penalty": {
+      "overfull": 10,
+      "indent": 1,
+      "overfull-once": 200,
+      "max-line-length": 80,
+      "linebreak": 100
+    },
+    "indent": {
+      "deriving": 2,
+      "if": "align",
+      "let-binds": "align",
+      "import-spec-list": "align-or-indent-by 2",
+      "onside": 2,
+      "where": 1,
+      "typesig": "align",
+      "do": "indent-by 2",
+      "app": "align",
+      "case": "indent-by 2",
+      "let-in": "indent-by 2",
+      "where-binds": "indent-by 1",
+      "let": "align",
+      "export-spec-list": "indent-by 2",
+      "multi-if": "indent-by 2",
+      "class": "indent-by 2"
+    },
+    "align": {
+      "let-binds": false,
+      "where": false,
+      "matches": false,
+      "limits": [10, 25],
+      "case": false,
+      "import-module": false,
+      "import-spec": false,
+      "class": false,
+      "record-fields": true
+    },
+    "options": {
+      "sort-pragmas": true,
+      "flexible-oneline": true,
+      "decl-no-blank-lines": [],
+      "split-language-pragmas": true,
+      "align-sum-type-decl": false,
+      "sort-import-lists": true,
+      "preserve-vertical-space": false,
+      "sort-imports": [
+        {
+          "prefixes": ["Prelude", "Preamble", "Protolude"],
+          "order": "sorted"
+        },
+        {
+          "prefixes": [""],
+          "order": "sorted"
+        },
+        {
+          "prefixes": ["Test"],
+          "order": "grouped"
+        }
+      ]
+    }
+  },
+  "language": "Haskell2010"
+}
+
+{-# START_FILE make.hs #-}
+#!/usr/bin/env stack
+-- stack --resolver lts-14.2 script
+
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE DeriveGeneric     #-}
+{-# LANGUAGE NoImplicitPrelude #-}
+{-# LANGUAGE BlockArguments    #-}
+
+
+import qualified Data.Text as T
+import Options.Generic
+import Protolude hiding (FilePath, die)
+import Turtle
+
+--------------------------------------------------------------------------------
+----------------------------- Data types ---------------------------------------
+--------------------------------------------------------------------------------
+
+data Args
+  = Package
+  | Deploy
+    { verbose :: Bool
+    }
+  | Invoke
+    { local :: Bool
+    , verbose :: Bool
+    , body :: Text
+    }
+  deriving (Generic, Show)
+
+instance ParseRecord Args
+
+--------------------------------------------------------------------------------
+----------------------------- Command functions --------------------------------
+--------------------------------------------------------------------------------
+
+main :: IO ()
+main = do
+  x <- getRecord "Command line utility to automate deployments etc."
+  unlessM serverlessInfo
+    (die "Please make sure that serverless framework is installed")
+  unlessM (testfile "LICENSE")
+    (die "Must be run from the project root")
+  sh $ case x of
+    Package -> package
+    Deploy verbose -> deploy verbose
+    Invoke local verbose body -> invoke local verbose body
+
+serverlessInfo :: IO Bool
+serverlessInfo = do
+  cd "serverless"
+  r <- (==) ExitSuccess <$> shell "sls info" empty
+  cd ".."
+  return r
+
+type BinaryPath = Text
+
+clean :: Shell ExitCode
+clean = run_ "stack clean"
+
+build :: Shell BinaryPath
+build = do
+  run_ "stack build"
+  snd <$> call_ "stack path --local-install-root"
+
+copyBinary :: BinaryPath -> Shell ExitCode
+copyBinary root =
+  run ["cp", T.strip root <> "/bin/bootstrap", "serverless"]
+
+slsDeploy :: Bool -> Shell ExitCode
+slsDeploy verbose = do
+  cd "serverless"
+  run $ catMaybes
+    [ pure "serverless deploy"
+    , if verbose then pure "--verbose" else mempty
+    ]
+
+slsPackage :: Bool -> Shell ExitCode
+slsPackage verbose = do
+  cd "serverless"
+  run $ catMaybes
+    [ pure "serverless package"
+    , if verbose then pure "--verbose" else mempty
+    ]
+
+deploy :: Bool -> Shell ExitCode
+deploy verbose = do
+  clean
+  root <- build -- TODO using/managed
+  copyBinary root
+  slsDeploy verbose
+
+package :: Shell ExitCode
+package = do
+  clean
+  root <- build -- TODO using/managed
+  copyBinary root
+  slsPackage True
+
+invoke :: Bool -> Bool -> Text -> Shell ExitCode
+invoke local verbose body = do
+  cd "serverless"
+  run $ catMaybes
+    [ pure "serverless invoke"
+    , if local then pure "local" else mempty
+    , pure "-f haskell-aws-lambda -l"
+    , pure $ "-d '" <> body <> "'"
+    , if verbose then pure "--verbose" else mempty
+    ]
+
+--------------------------------------------------------------------------------
+----------------------------- Utility functions --------------------------------
+--------------------------------------------------------------------------------
+
+-- | Returs stdout
+call_ :: Text -> Shell (ExitCode, Text)
+call_ cmd = do
+  putText $ "> " <> cmd
+  shellStrict cmd empty
+
+-- | Outputs stdout
+run :: [Text] -> Shell ExitCode
+run = run_ . unwords
+
+run_ :: Text -> Shell ExitCode
+run_ cmd = do
+  putText $ "\n> " <> cmd
+  shell cmd empty
+
+unwords :: [Text] -> Text
+unwords = T.intercalate " "
+
+{-# START_FILE package.yaml #-}
+name: haskell-aws-lambda-template
+version: 0.1.0.0
+category: app
+author: Bellroy
+maintainer: geeks@bellroy.com
+copyright: Bellroy
+github: tricycle/haskell-aws-lambda-template
+license: NONE
+
+extra-source-files:
+  - README.md
+
+ghc-options:
+  - "-Wall"
+  - "-Wcompat"
+  - "-Wincomplete-record-updates"
+  - "-Wincomplete-uni-patterns"
+  - "-Wredundant-constraints"
+  - "-Wtabs"
+  - "-fhelpful-errors"
+
+dependencies:
+  - base >= 4.7 && < 5
+  - aws-lambda-haskell-runtime >= 2.0.1
+
+library:
+  source-dirs: src
+  exposed-modules:
+    - Types
+    - Lib
+    - Aws.Api.Gateway
+  dependencies:
+    - aeson
+    - aeson-extra
+    - aeson-casing
+    - amazonka-core
+    - bytestring
+    - case-insensitive
+    - http-types
+    - iproute
+    - lens
+    - modern-uri
+    - network
+    - protolude
+    - text
+    - transformers
+    - unordered-containers
+
+executables:
+  bootstrap:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -O2
+      - -static
+      - -with-rtsopts=-N
+    cc-options: -static
+    ld-options: -static -pthread
+    dependencies:
+      - aeson
+      - haskell-aws-lambda-template
+      - lens
+      - protolude
+      - transformers
+
+default-extensions:
+  - ApplicativeDo
+  - AutoDeriveTypeable
+  - BangPatterns
+  - BinaryLiterals
+  - ConstraintKinds
+  - DataKinds
+  - DefaultSignatures
+  - DeriveAnyClass
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveLift
+  - DeriveTraversable
+  - DerivingStrategies
+  - EmptyCase
+  - EmptyDataDecls
+  - ExistentialQuantification
+  - FlexibleContexts
+  - FlexibleInstances
+  - FunctionalDependencies
+  - GADTs
+  - GeneralizedNewtypeDeriving
+  - InstanceSigs
+  - KindSignatures
+  - LambdaCase
+  - MultiParamTypeClasses
+  - MultiWayIf
+  - NamedFieldPuns
+  - OverloadedLabels
+  - OverloadedStrings
+  - PatternSynonyms
+  - PatternGuards
+  - PartialTypeSignatures
+  - QuasiQuotes
+  - RankNTypes
+  - RecordWildCards
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - TupleSections
+  - TypeApplications
+  - TypeFamilies
+  - TypeFamilyDependencies
+  - TypeOperators
+  - TypeSynonymInstances
+  - ViewPatterns
+
+{-# START_FILE README.md #-}
+# Example: AWS Lambda written in Haskell
+
+## Prerequisites
+
+- [The Haskell Tool Stack](https://docs.haskellstack.org/en/stable/GUIDE/)
+- [Docker](https://www.docker.com/community-edition)
+- AWS CLI already configured with Administrator permission
+- [Serverless Framework](https://serverless.com/)
+
+## How to build
+
+```sh
+stack build
+```
+
+produces `build/function.zip`
+
+## How to setup infrastructure
+
+Use `terraform` (one-time action) to setup infrastructure shared by serverless apps
+(S3 buckets, roles, etc)
+
+```sh
+cd terraform
+env AWS_PROFILE=test AWS_SDK_LOAD_CONFIG=1 terraform apply
+```
+
+## How to deploy
+
+### Manually
+
+```sh
+aws lambda create-function \
+  --function-name haskell-aws-lambda \
+  --runtime provided \
+  --role 'arn:aws:iam::<your account id>:role/service-role/aws-lambda-function-role' \
+  --handler 'src/Lib.handler' \
+  --zip-file 'fileb://build/function.zip'
+```
+
+### Using "serverless" framework
+
+```sh
+./make.hs deploy --verbose
+```
+
+## How to invoke
+
+### Manually
+
+```sh
+aws lambda invoke \
+  --function-name haskell-aws-lambda \
+  --payload '{ "personName": "Chuck Norris", "personAge": 79 }' \
+  response.txt
+
+cat response.txt
+```
+
+### Using "serverless" framework
+
+```sh
+./make.hs invoke --verbose \
+  --body '{ "personName": "Chuck Norris", "personAge": 79 }'
+```
+
+## Links
+
+1. [The definitive guide to using Terraform with the Serverless Framework](https://serverless.com/blog/definitive-guide-terraform-serverless/)
+1. https://serverless.com
+1. https://theam.github.io/aws-lambda-haskell-runtime/
+
+{-# START_FILE Setup.hs #-}
+import Distribution.Simple
+main = defaultMain
+
+{-# START_FILE stack.yaml #-}
+resolver: lts-14.1
+packages:
+  - .
+docker:
+  enable: true
+extra-deps:
+  - aeson-options-0.1.0@sha256:2d0c25afbb2d038bd5b57de8d042e319ea1a5ec7d7b92810d8a0cf0777882b6a,1244
+  - amazonka-core-1.6.1@sha256:ad6b06eb5b6847cbfbe4201e78b3fdb7818a42da061c5d0f8af4fdf2494e44b5,4957
+  - http-client-0.5.14@sha256:4880b27d6741e331454a1d4c887d96ce3d7d625322c8433983a4b1cd08538577,5348
+
+{-# START_FILE app/Main.hs #-}
+module Main where
+
+import Protolude
+
+import qualified Aws.Api.Gateway as Gateway
+import qualified Aws.Lambda as AWS
+import Control.Lens ((?~))
+import Control.Monad.Trans.Except (ExceptT, catchE, runExceptT, withExceptT)
+import qualified Data.Aeson as Json
+import qualified Lib
+import Types (Problem)
+
+-- https://theam.github.io/aws-lambda-haskell-runtime/index.html
+main :: IO ()
+main = AWS.runLambda run
+
+run :: AWS.LambdaOptions -> IO (Either String AWS.LambdaResult)
+run AWS.LambdaOptions{AWS.functionHandler, AWS.contextObject, AWS.eventObject} =
+  case functionHandler of
+    "src/Lib.handler" ->
+      handleRequest (AWS.decodeObj eventObject) (AWS.decodeObj contextObject)
+    _ -> pure $ Left $
+      "Handler " <> functionHandler <> " does not exist on project"
+
+handleRequest :: Gateway.ProxyRequest ByteString
+              -> AWS.Context
+              -> IO (Either String AWS.LambdaResult)
+handleRequest request context =
+  runExceptT $ withExceptT AWS.encodeObj $ AWS.LambdaResult . AWS.encodeObj
+  <$> Lib.handler request context `catchE` badRequest
+ where
+  badRequest :: Problem -> ExceptT () IO (Gateway.ProxyResponse ByteString)
+  badRequest problem = pure $ Gateway.responseBadRequest & Gateway.responseBody
+    ?~ (toS $ Json.encode problem)
+
+{-# START_FILE serverless/serverless.yml #-}
+org: yuriylazaryev
+frameworkVersion: "=1.50.0"
+app: haskell-aws-lambda-example
+service: haskell-serverless
+provider:
+  name: aws
+  runtime: provided
+  stage: dev
+  region: eu-central-1
+  memorySize: 1024
+  reservedConcurrency: 10
+  timeout: 10
+  logRetentionInDays: 14
+  cfnRole: ${ssm:/serverless/cfnRole/arn~true}
+  deploymentBucket:
+    name: ${ssm:/serverless/deploymentBucket/name~true}
+  tags:
+    serverless: ""
+package:
+  individually: true
+  exclude:
+    - ./**
+  include:
+    - ../src/**
+    - ../app/**
+    - ../package.yaml
+    - bootstrap
+functions:
+  haskell-aws-lambda:
+    handler: src/Lib.handler
+    events:
+      - http:
+          path: persons
+          method: post
+          cors: true
+
+{-# START_FILE src/Aws/Api/Gateway.hs #-}
+{-# LANGUAGE TemplateHaskell #-}
+
+{-# OPTIONS_GHC -Wno-redundant-constraints #-}
+
+module Aws.Api.Gateway where
+
+import Protolude
+
+import Control.Lens hiding ((.=))
+import Data.Aeson
+import Data.Aeson.Casing (aesonDrop, camelCase)
+import Data.Aeson.TH (deriveFromJSON)
+import Data.Aeson.TextValue (TextValue, unTextValue)
+import Data.Aeson.Types (Parser)
+import Data.ByteString (ByteString)
+import qualified Data.CaseInsensitive as CI
+import Data.HashMap.Strict (HashMap)
+import qualified Data.HashMap.Strict as HashMap
+import Data.IP
+import Data.Text (Text)
+import qualified Data.Text as Text
+import Data.Text.Encoding (decodeUtf8, encodeUtf8)
+import GHC.Generics (Generic)
+import Network.AWS.Data.Base64
+import Network.AWS.Data.Text
+import qualified Network.HTTP.Types as HTTP
+
+type Method = Text
+
+-- type HeaderName = CI Text
+type HeaderName = Text --- XXX should be CI Text
+
+type HeaderValue = Text
+
+type QueryParamName = Text
+
+type QueryParamValue = Text
+
+type PathParamName = Text
+
+type PathParamValue = Text
+
+type StageVarName = Text
+
+type StageVarValue = Text
+
+data RequestIdentity = RequestIdentity
+  { _riCognitoIdentityPoolId :: !(Maybe Text)
+  , _riAccountId :: !(Maybe Text)
+  , _riCognitoIdentityId :: !(Maybe Text)
+  , _riCaller :: !(Maybe Text)
+  , _riApiKey :: !(Maybe Text)
+  , _riSourceIp :: !(Maybe IP)
+  , _riCognitoAuthenticationType :: !(Maybe Text)
+  , _riCognitoAuthenticationProvider :: !(Maybe Text)
+  , _riUserArn :: !(Maybe Text)
+  , _riUserAgent :: !(Maybe Text)
+  , _riUser :: !(Maybe Text)
+  }
+  deriving (Eq, Show)
+
+readParse :: Read a => String -> Text -> Parser a
+readParse msg str = case readMaybe (Text.unpack str) of
+  Just result -> pure result
+  Nothing -> fail $ "Failed to parse an " ++ msg
+
+instance FromJSON RequestIdentity where
+  parseJSON = withObject "RequestIdentity" $ \o ->
+    RequestIdentity <$> o .:? "cognitoIdentityPoolId" <*> o .:? "accountId"
+    <*> o .:? "cognitoIdentityId" <*> o .:? "caller" <*> o .:? "apiKey"
+    <*> (o .:? "sourceIp" >>= traverse (readParse "IP address"))
+    <*> o .:? "cognitoAuthenticationType"
+    <*> o .:? "cognitoAuthenticationProvider" <*> o .:? "userArn"
+    <*> o .:? "userAgent" <*> o .:? "user"
+
+$(makeLenses ''RequestIdentity)
+
+data Authorizer = Authorizer { _aPrincipalId :: !(Maybe Text)
+                             , _aClaims      :: !Object
+                             , _aContext     :: !Object
+                             }
+  deriving (Eq, Show)
+
+instance FromJSON Authorizer where
+  parseJSON = withObject "Authorizer" $
+    \o -> Authorizer <$> o .:? "principalId" <*> o .:? "claims" .!= mempty
+    <*> (pure $ HashMap.delete "principalId" $ HashMap.delete "claims" o)
+
+$(makeLenses ''Authorizer)
+
+data ProxyRequestContext = ProxyRequestContext
+  { _prcPath         :: !(Maybe Text)
+  , _prcAccountId    :: !Text
+  , _prcResourceId   :: !Text
+  , _prcStage        :: !Text
+  , _prcRequestId    :: !Text
+  , _prcIdentity     :: !RequestIdentity
+  , _prcResourcePath :: !Text
+  , _prcHttpMethod   :: !Text
+  , _prcApiId        :: !Text
+  , _prcProtocol     :: !Text
+  , _prcAuthorizer   :: !(Maybe Authorizer)
+  }
+  deriving (Eq, Show)
+
+$(deriveFromJSON (aesonDrop 4 camelCase) ''ProxyRequestContext)
+
+$(makeLenses ''ProxyRequestContext)
+
+data ProxyRequest body = ProxyRequest
+  { _proxyRequestResource :: !Text
+  , _proxyRequestPath :: !ByteString
+  , _proxyRequestHttpMethod :: !HTTP.Method
+  , _proxyRequestHeaders :: !HTTP.RequestHeaders
+  , _proxyRequestQueryStringParameters :: !HTTP.Query
+  , _proxyRequestPathParameters :: !(HashMap PathParamName PathParamValue)
+  , _proxyRequestStageVariables :: !(HashMap StageVarName StageVarValue)
+  , _proxyRequestRequestContext :: !ProxyRequestContext
+  , _proxyRequestBody :: !(Maybe (TextValue body))
+  }
+  deriving (Eq, Show, Generic)
+
+instance FromText body => FromJSON (ProxyRequest body) where
+  parseJSON = withObject "ProxyRequest" $ \o -> ProxyRequest <$> o .: "resource"
+    <*> (encodeUtf8 <$> o .: "path") <*> (encodeUtf8 <$> o .: "httpMethod")
+    <*> (fmap fromAWSHeaders <$> o .:? "headers") .!= mempty
+    <*> (fmap fromAWSQuery <$> o .:? "queryStringParameters") .!= mempty
+    <*> o .:? "pathParameters" .!= HashMap.empty
+    <*> o .:? "stageVariables" .!= HashMap.empty <*> o .: "requestContext"
+    <*> o .:? "body"
+  -- Explicit type signatures so that we don't accidentally tell Aeson
+  -- to try to parse the wrong sort of structure
+   where
+    fromAWSHeaders :: HashMap HeaderName HeaderValue -> HTTP.RequestHeaders
+    fromAWSHeaders = fmap toHeader . HashMap.toList
+     where
+      toHeader = bimap (CI.mk . encodeUtf8) encodeUtf8
+
+    fromAWSQuery :: HashMap QueryParamName QueryParamValue -> HTTP.Query
+    fromAWSQuery = fmap toQueryItem . HashMap.toList
+     where
+      toQueryItem =
+        bimap encodeUtf8
+              (\x -> if Text.null x then Nothing else Just . encodeUtf8 $ x)
+
+$(makeLenses ''ProxyRequest)
+
+-- | Get the request body, if there is one
+requestBody :: Getter (ProxyRequest body) (Maybe body)
+requestBody = proxyRequestBody . mapping unTextValue
+
+-- | Get the binary (decoded Base64) request body, if there is one
+requestBodyBinary :: Getter (ProxyRequest Base64) (Maybe ByteString)
+requestBodyBinary = requestBody . mapping _Base64
+
+data ProxyResponse body = ProxyResponse
+  { _proxyResponseStatusCode :: !Int
+  , _proxyResponseHeaders    :: !HTTP.ResponseHeaders
+  , _proxyResponseBody       :: !(Maybe (TextValue body))
+  }
+  deriving (Eq, Show, Generic)
+
+instance ToText body => ToJSON (ProxyResponse body) where
+  toJSON ProxyResponse{..} =
+    object [ "statusCode" .= _proxyResponseStatusCode
+           , "headers" .= toAWSHeaders _proxyResponseHeaders
+           , "body" .= _proxyResponseBody
+           ]
+   where
+    toAWSHeaders :: HTTP.ResponseHeaders -> HashMap HeaderName HeaderValue
+    toAWSHeaders = HashMap.fromList
+      . fmap (bimap (decodeUtf8 . CI.original) decodeUtf8)
+
+instance FromText body => FromJSON (ProxyResponse body) where
+  parseJSON = withObject "ProxyResponse" $ \o -> ProxyResponse
+    <$> o .: "statusCode" <*> (fromAWSHeaders <$> o .: "headers")
+    <*> o .:? "body"
+  -- Explicit type signatures so that we don't accidentally tell Aeson
+  -- to try to parse the wrong sort of structure
+   where
+    fromAWSHeaders :: HashMap HeaderName HeaderValue -> HTTP.RequestHeaders
+    fromAWSHeaders = fmap toHeader . HashMap.toList
+     where
+      toHeader = bimap (CI.mk . encodeUtf8) encodeUtf8
+
+$(makeLenses ''ProxyResponse)
+
+response :: Int -> ProxyResponse body
+response statusCode = ProxyResponse statusCode mempty Nothing
+
+responseOK :: ProxyResponse body
+responseOK = response 200
+
+responseNotFound :: ProxyResponse body
+responseNotFound = response 404
+
+responseBadRequest :: ProxyResponse body
+responseBadRequest = response 400
+
+responseBody :: Setter' (ProxyResponse body) (Maybe body)
+responseBody = proxyResponseBody . at () . mapping unTextValue
+
+responseBodyBinary :: Setter' (ProxyResponse Base64) (Maybe ByteString)
+responseBodyBinary = responseBody . mapping _Base64
+
+{-# START_FILE src/Data/Aeson/TextValue.hs #-}
+{-# LANGUAGE TemplateHaskell #-}
+
+{-|
+Description: Type for things that can be embedded in a JSON string
+
+Provides @FromJSON@ and @ToJSON@ instances for anything that
+has @FromText@ and @ToText@ instances, e.g. @TextValue Text@,
+@(FromJSON a, ToJSON a) => TextValue (Embedded a)@,
+@TextValue Base64@
+-}
+module Data.Aeson.TextValue where
+
+import Control.Lens.TH
+import Data.Aeson
+import Data.String
+import Network.AWS.Data.Text (FromText(..), ToText(..), fromText)
+
+newtype TextValue a = TextValue { _unTextValue :: a }
+  deriving stock (Eq, Show)
+  deriving newtype (IsString)
+
+instance FromText a => FromJSON (TextValue a) where
+  parseJSON =
+    withText "TextValue" $ fmap TextValue . either fail pure . fromText
+
+instance ToText a => ToJSON (TextValue a) where
+  toJSON = toJSON . toText . _unTextValue
+
+  toEncoding = toEncoding . toText . _unTextValue
+
+$(makeLenses ''TextValue)
+
+{-# START_FILE src/Lib.hs #-}
+module Lib where
+
+import Protolude
+
+import qualified Aws.Api.Gateway as Gateway
+import qualified Aws.Lambda as AWS (Context)
+import Control.Lens ((&), (?~), (^.))
+import Data.Aeson (eitherDecodeStrict, encode)
+import Text.URI.QQ (uri)
+import Types
+
+handler :: MonadError Problem m
+        => Gateway.ProxyRequest ByteString
+        -> AWS.Context
+        -> m (Gateway.ProxyResponse ByteString)
+handler request _ = do
+  reqBody <- maybe (throwError $ problemEmptyBody) pure $
+    request ^. Gateway.requestBody
+  person :: Person <- either (throwError . problemBadBody) pure $
+    eitherDecodeStrict reqBody
+  let respBody = toS $ encode person
+  return $ Gateway.responseOK & Gateway.responseBody ?~ respBody
+
+problemEmptyBody :: Problem
+problemEmptyBody = Problem
+  { problemType  =
+      [uri|https://github.com/Unisay/haskell-aws-template/empty-body|]
+  , problemTitle = "Request body is empty"
+  }
+
+problemBadBody :: String -> Problem
+problemBadBody err = Problem
+  { problemType  =
+      [uri|https://github.com/Unisay/haskell-aws-template/bad-body|]
+  , problemTitle = "Failed to unmarshal request body: " <> toS err
+  }
+
+{-# START_FILE src/Types.hs #-}
+module Types where
+
+import Protolude
+
+import Data.Aeson ((.=), FromJSON(..), ToJSON(..))
+import qualified Data.Aeson as Json
+import Text.URI (URI)
+import qualified Text.URI as URI
+
+data Person = Person { personName :: String, personAge :: Int }
+  deriving stock (Generic)
+  deriving anyclass (FromJSON, ToJSON)
+
+-- | https://tools.ietf.org/html/rfc7807
+data Problem = Problem { problemType :: URI, problemTitle :: Text }
+  deriving stock (Eq, Show)
+
+instance ToJSON Problem where
+  toJSON p = Json.object [ "type" .= URI.render (problemType p)
+                         , "title" .= problemTitle p
+                         ]
+
+{-# START_FILE terraform/main.tf #-}
+provider "aws" {
+  version = "~> 2.25"
+  region  = var.region
+}
+
+terraform {
+  backend "s3" {
+    encrypt        = true
+    bucket         = "bellroy-terraform-remote-state"
+    dynamodb_table = "terraform-state-lock-dynamo"
+    key            = "terraform-state/terraform.tfstate"
+  }
+}
+
+resource "aws_iam_role" "serverless_cfn_role" {
+  name               = "serverless-cfn-role"
+  assume_role_policy = <<EOF
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Action":"sts:AssumeRole",
+      "Principal":{
+        "Service":"cloudformation.amazonaws.com"
+      },
+      "Effect":"Allow",
+      "Sid":""
+    }
+  ]
+}
+EOF
+}
+
+data "template_file" "serverless_cfn_role_policy_tpl" {
+  template = file("cfn_role_policy.json.tpl")
+  vars = {
+    region           = var.region
+    account_no       = var.account_no
+    stage            = var.serverless_stage
+    application_name = var.serverless_application_name
+    service_name     = var.serverless_service_name
+  }
+}
+
+resource "aws_iam_policy" "serverless_cfn_role_policy" {
+  name        = "serverless-cfn-role-policy"
+  description = "A serverless cfnRole policy"
+  policy      = data.template_file.serverless_cfn_role_policy_tpl.rendered
+}
+
+resource "aws_iam_role_policy_attachment" "serverless-attach" {
+  role       = aws_iam_role.serverless_cfn_role.name
+  policy_arn = aws_iam_policy.serverless_cfn_role_policy.arn
+}
+
+resource "aws_s3_bucket" "serverless_deployment_bucket" {
+  bucket = "bellroy-serverless-deployment-bucket"
+  versioning { enabled = false }
+  lifecycle { prevent_destroy = false }
+  tags = { Name = "Bucket that stores artifacts deployed with Serverless" }
+}
+
+{-# START_FILE terraform/parameters.tf #-}
+resource "aws_ssm_parameter" "serverlessCfnRoleArn" {
+  name        = "/serverless/cfnRole/arn"
+  description = "ARN of the cfmRole for the serverless.yaml"
+  type        = "SecureString"
+  value       = aws_iam_role.serverless_cfn_role.arn
+}
+
+resource "aws_ssm_parameter" "serverlessDeploymentBucket" {
+  name        = "/serverless/deploymentBucket/name"
+  description = "Bucket that stores artifacts deployed with Serverless"
+  type        = "SecureString"
+  value       = aws_s3_bucket.serverless_deployment_bucket.bucket
+}
+
+{-# START_FILE terraform/terraform.tfvars #-}
+account_no = "251426845561"
+serverless_application_name = "haskell-aws-lambda"
+serverless_stage = "dev"
+serverless_service_name = "haskell-serverless"
+
+{-# START_FILE terraform/variables.tf #-}
+variable "region" {
+  default = "eu-central-1"
+}
+
+variable "profile" {
+  default = "test"
+}
+
+variable "account_no" {
+  description = "AWS account number"
+}
+
+variable "serverless_application_name" {
+  description = "Name of the serverless application"
+}
+
+variable "serverless_stage" {
+  description = "Name of the serverless stage"
+}
+
+variable "serverless_service_name" {
+  description = "Name of the serverless service"
+}
+
+{-# START_FILE terraform/cfn_role_policy.json.tpl #-}
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Effect":"Allow",
+      "Action":[
+        "cloudformation:Describe*",
+        "cloudformation:List*",
+        "cloudformation:Get*",
+        "cloudformation:CreateStack",
+        "cloudformation:UpdateStack",
+        "cloudformation:DeleteStack"
+      ],
+      "Resource":"arn:aws:cloudformation:${region}:${account_no}:stack/${service_name}*/*"
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "cloudformation:ValidateTemplate"
+      ],
+      "Resource":"*"
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "s3:CreateBucket",
+        "s3:DeleteBucket",
+        "s3:Get*",
+        "s3:List*"
+      ],
+      "Resource":[
+        "arn:aws:s3:::*"
+      ]
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "s3:*"
+      ],
+      "Resource":[
+        "arn:aws:s3:::*/*"
+      ]
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "logs:DescribeLogGroups"
+      ],
+      "Resource":"arn:aws:logs:${region}:${account_no}:log-group::log-stream:*"
+    },
+    {
+      "Action":[
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:DeleteLogGroup",
+        "logs:DeleteLogStream",
+        "logs:DescribeLogStreams",
+        "logs:FilterLogEvents",
+        "logs:PutRetentionPolicy",
+        "logs:PutSubscriptionFilter",
+        "logs:DeleteSubscriptionFilter"
+      ],
+      "Resource":[
+        "arn:aws:logs:${region}:${account_no}:log-group:/aws/lambda/${service_name}-${stage}-${application_name}:log-stream:*",
+        "arn:aws:logs:${region}:${account_no}:log-group:/aws/api-gateway/${service_name}-${stage}:log-stream:*"
+      ],
+      "Effect":"Allow"
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "iam:GetRole",
+        "iam:PassRole",
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:PutRolePolicy",
+        "iam:DeleteRolePolicy",
+        "iam:AttachRolePolicy",
+        "iam:DetachRolePolicy"
+      ],
+      "Resource":[
+        "arn:aws:iam::${account_no}:role/${service_name}-${stage}-${region}-lambdaRole",
+        "arn:aws:iam::${account_no}:role/${service_name}-${stage}-EnterpriseLogAccessIamRole-*",
+        "arn:aws:iam::${account_no}:role/${service_name}-${stage}-IamRoleCustomResourcesLambd-*"
+      ]
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "iam:CreateRole"
+      ],
+      "Resource":[
+        "arn:aws:iam::${account_no}:role/${service_name}-${stage}-EnterpriseLogAccessIamRole-*"
+      ]
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "apigateway:GET",
+        "apigateway:POST",
+        "apigateway:PUT",
+        "apigateway:DELETE"
+      ],
+      "Resource":[
+        "arn:aws:apigateway:${region}::/restapis"
+      ]
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "apigateway:GET",
+        "apigateway:POST",
+        "apigateway:PUT",
+        "apigateway:DELETE"
+      ],
+      "Resource":[
+        "arn:aws:apigateway:${region}::/restapis/*"
+      ]
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "lambda:GetFunction",
+        "lambda:CreateFunction",
+        "lambda:DeleteFunction",
+        "lambda:UpdateFunctionConfiguration",
+        "lambda:UpdateFunctionCode",
+        "lambda:ListVersionsByFunction",
+        "lambda:PublishVersion",
+        "lambda:CreateAlias",
+        "lambda:DeleteAlias",
+        "lambda:UpdateAlias",
+        "lambda:GetFunctionConfiguration",
+        "lambda:AddPermission",
+        "lambda:RemovePermission",
+        "lambda:InvokeFunction"
+      ],
+      "Resource":[
+        "arn:aws:lambda:*:${account_no}:function:${service_name}*"
+      ]
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs"
+      ],
+      "Resource":[
+        "*"
+      ]
+    },
+    {
+      "Effect":"Allow",
+      "Action":[
+        "events:Put*",
+        "events:Remove*",
+        "events:Delete*",
+        "events:Describe*"
+      ],
+      "Resource":"arn:aws:events::${account_no}:rule/${service_name}*"
+    }
+  ]
+}
+
+{-# START_FILE terraform/bootstrap-state/main.tf #-}
+# This module solves a so-called "TF state boostrapping problem", as described here:
+# https://www.lightenna.com/tech/2018/storing-terraform-state-in-s3/
+
+provider "aws" {
+  region = "eu-central-1"
+}
+
+resource "aws_s3_bucket" "terraform-state-storage-s3" {
+  bucket = "bellroy-terraform-remote-state"
+  versioning { enabled = true }
+  lifecycle { prevent_destroy = true }
+  tags = { Name = "S3 Remote Terraform State Store" }
+}
+
+resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {
+  name           = "terraform-state-lock-dynamo"
+  hash_key       = "LockID"
+  read_capacity  = 20
+  write_capacity = 20
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+  tags = { Name = "DynamoDB Terraform State Lock Table" }
+}
