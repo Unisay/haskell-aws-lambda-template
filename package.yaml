@@ -25,9 +25,26 @@ dependencies:
 
 library:
   source-dirs: src
+  exposed-modules:
+    - Types
+    - Lib
+    - Aws.Api.Gateway
   dependencies:
     - aeson
+    - aeson-extra
+    - aeson-casing
+    - amazonka-core
+    - bytestring
+    - case-insensitive
+    - http-types
+    - iproute
+    - lens
+    - modern-uri
+    - network
     - protolude
+    - text
+    - transformers
+    - unordered-containers
 
 executables:
   bootstrap:
@@ -42,7 +59,11 @@ executables:
     cc-options: -static
     ld-options: -static -pthread
     dependencies:
+      - aeson
       - haskell-aws-lambda-template
+      - lens
+      - protolude
+      - transformers
 
 default-extensions:
   - ApplicativeDo
@@ -52,6 +73,7 @@ default-extensions:
   - ConstraintKinds
   - DataKinds
   - DefaultSignatures
+  - DeriveAnyClass
   - DeriveFoldable
   - DeriveFunctor
   - DeriveGeneric
@@ -77,7 +99,9 @@ default-extensions:
   - PatternSynonyms
   - PatternGuards
   - PartialTypeSignatures
+  - QuasiQuotes
   - RankNTypes
+  - RecordWildCards
   - ScopedTypeVariables
   - StandaloneDeriving
   - TupleSections

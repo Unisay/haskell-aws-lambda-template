@@ -16,11 +16,12 @@ import Turtle
 ----------------------------- Data types ---------------------------------------
 --------------------------------------------------------------------------------
 
-data Args 
-  = Deploy 
+data Args
+  = Package
+  | Deploy
     { verbose :: Bool
-    } 
-  | Invoke 
+    }
+  | Invoke
     { local :: Bool
     , verbose :: Bool
     , body :: Text
@@ -36,22 +37,65 @@ instance ParseRecord Args
 main :: IO ()
 main = do
   x <- getRecord "Command line utility to automate deployments etc."
-  unlessM (testfile "LICENSE") (die "Must be run from the project root")
+  unlessM serverlessInfo
+    (die "Please make sure that serverless framework is installed")
+  unlessM (testfile "LICENSE")
+    (die "Must be run from the project root")
   sh $ case x of
+    Package -> package
     Deploy verbose -> deploy verbose
     Invoke local verbose body -> invoke local verbose body
 
-deploy :: Bool -> Shell ExitCode
-deploy verbose = do
-  run_ "stack clean"
+serverlessInfo :: IO Bool
+serverlessInfo = do
+  cd "serverless"
+  r <- (==) ExitSuccess <$> shell "sls info" empty
+  cd ".."
+  return r
+
+type BinaryPath = Text
+
+clean :: Shell ExitCode
+clean = run_ "stack clean"
+
+build :: Shell BinaryPath
+build = do
   run_ "stack build"
-  (_, root) <- call_ "stack path --local-install-root"
+  snd <$> call_ "stack path --local-install-root"
+
+copyBinary :: BinaryPath -> Shell ExitCode
+copyBinary root =
   run ["cp", T.strip root <> "/bin/bootstrap", "serverless"]
+
+slsDeploy :: Bool -> Shell ExitCode
+slsDeploy verbose = do
   cd "serverless"
   run $ catMaybes
     [ pure "serverless deploy"
-    , if verbose then pure "--verbose" else mempty 
+    , if verbose then pure "--verbose" else mempty
     ]
+
+slsPackage :: Bool -> Shell ExitCode
+slsPackage verbose = do
+  cd "serverless"
+  run $ catMaybes
+    [ pure "serverless package"
+    , if verbose then pure "--verbose" else mempty
+    ]
+
+deploy :: Bool -> Shell ExitCode
+deploy verbose = do
+  clean
+  root <- build -- TODO using/managed
+  copyBinary root
+  slsDeploy verbose
+
+package :: Shell ExitCode
+package = do
+  clean
+  root <- build -- TODO using/managed
+  copyBinary root
+  slsPackage True
 
 invoke :: Bool -> Bool -> Text -> Shell ExitCode
 invoke local verbose body = do

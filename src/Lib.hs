@@ -2,17 +2,35 @@ module Lib where
 
 import Protolude
 
+import qualified Aws.Api.Gateway as Gateway
 import qualified Aws.Lambda as AWS (Context)
-import Data.Aeson (FromJSON, ToJSON)
+import Control.Lens ((&), (?~), (^.))
+import Data.Aeson (eitherDecodeStrict, encode)
+import Text.URI.QQ (uri)
+import Types
 
-data Person = Person { personName :: String, personAge :: Int }
-  deriving (Generic)
+handler :: MonadError Problem m
+        => Gateway.ProxyRequest ByteString
+        -> AWS.Context
+        -> m (Gateway.ProxyResponse ByteString)
+handler request _ = do
+  reqBody <- maybe (throwError $ problemEmptyBody) pure $
+    request ^. Gateway.requestBody
+  person :: Person <- either (throwError . problemBadBody) pure $
+    eitherDecodeStrict reqBody
+  let respBody = toS $ encode person
+  return $ Gateway.responseOK & Gateway.responseBody ?~ respBody
 
-instance FromJSON Person
+problemEmptyBody :: Problem
+problemEmptyBody = Problem
+  { problemType  =
+      [uri|https://github.com/Unisay/haskell-aws-template/empty-body|]
+  , problemTitle = "Request body is empty"
+  }
 
-instance ToJSON Person
-
-handler :: Person -> AWS.Context -> IO (Either String Person)
-handler person _ = if personAge person > 0
-                   then return (Right person)
-                   else return (Left "A person's age must be positive")
+problemBadBody :: String -> Problem
+problemBadBody err = Problem
+  { problemType  =
+      [uri|https://github.com/Unisay/haskell-aws-template/bad-body|]
+  , problemTitle = "Failed to unmarshal request body: " <> toS err
+  }

@@ -5,6 +5,7 @@
     "ConstraintKinds",
     "DataKinds",
     "DefaultSignatures",
+    "DeriveAnyClass",
     "DeriveFoldable",
     "DeriveFunctor",
     "DeriveGeneric",
@@ -29,7 +30,9 @@
     "OverloadedLabels",
     "OverloadedStrings",
     "PatternSynonyms",
+    "QuasiQuotes",
     "RankNTypes",
+    "RecordWildCards",
     "ScopedTypeVariables",
     "StandaloneDeriving",
     "TupleSections",
@@ -85,11 +88,6 @@
       "record in pattern": {
         "force-linebreak": false,
         "spaces": "none",
-        "linebreaks": "none"
-      },
-      "record": {
-        "force-linebreak": false,
-        "spaces": "after",
         "linebreaks": "none"
       }
     },

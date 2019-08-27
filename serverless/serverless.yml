@@ -39,8 +39,8 @@ package:
 functions:
   haskell-aws-lambda:
     handler: src/Lib.handler
-    # events:
-    #   - http:
-    #       path: users/create
-    #       method: post
-    #       cors: true
+    events:
+      - http:
+          path: persons
+          method: post
+          cors: true

@@ -3,3 +3,7 @@ packages:
   - .
 docker:
   enable: true
+extra-deps:
+  - aeson-options-0.1.0@sha256:2d0c25afbb2d038bd5b57de8d042e319ea1a5ec7d7b92810d8a0cf0777882b6a,1244
+  - amazonka-core-1.6.1@sha256:ad6b06eb5b6847cbfbe4201e78b3fdb7818a42da061c5d0f8af4fdf2494e44b5,4957
+  - http-client-0.5.14@sha256:4880b27d6741e331454a1d4c887d96ce3d7d625322c8433983a4b1cd08538577,5348
